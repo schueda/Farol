@@ -1,1 +1,0 @@
-web: python quick_start.py
