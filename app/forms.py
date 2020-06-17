@@ -27,9 +27,9 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('esse email já foi registrado, por favor utilize outro')
 
 class EditProfileForm(FlaskForm):
-    username = StringField('Nome de usuário', validators=[DataRequired()])
-    about_me = TextAreaField('Sobre mim', validators=[Length(min=0, max=140)])
-    submit = SubmitField('Enviar')
+    username = StringField('Username', validators=[DataRequired()])
+    about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
+    submit = SubmitField('Submit')
 
     def __init__(self, original_username, *args, **kwargs):
         super(EditProfileForm, self).__init__(*args, **kwargs)
@@ -38,5 +38,5 @@ class EditProfileForm(FlaskForm):
     def validate_username(self, username):
         if username.data != self.original_username:
             user = User.query.filter_by(username=self.username.data).first()
-        if user is not None:
-            raise ValidationError("Esse nome já está sendo utilizado")
+            if user is not None:
+                raise ValidationError('Esse nome já está sendo utilizado, escolha outro.')
