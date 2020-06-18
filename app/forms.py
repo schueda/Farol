@@ -47,3 +47,12 @@ class EmptyForm(FlaskForm):
 class PostForm(FlaskForm):
     post = TextAreaField('Diga algo man', validators=[DataRequired(), Length(min=1, max=140)])
     submit = SubmitField('esteja dito então')
+
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(),Email()])
+    submit = SubmitField('Requerir uma troca de senha')
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Senha', validators=[DataRequired()])
+    password2 = PasswordField('Repita a Senha', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Redefinir a senha')

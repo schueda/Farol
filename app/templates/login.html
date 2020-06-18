@@ -20,6 +20,10 @@
         </p>
         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
         <p>{{form.submit() }}</p>
+        <p>
+            Esqueceu a senha?
+            <a href="{{ url_for('reset_password_request') }}">Clique aqui para trocá-la</a>
+        </p>
     </form>
     <p>Não possui conta? <a href="{{ url_for('register') }}">Clique aqui para se registrar</a></p>
 {% endblock %}
